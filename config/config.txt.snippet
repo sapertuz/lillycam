@@ -1,0 +1,23 @@
+# Lines to add to /boot/firmware/config.txt (Raspberry Pi OS Bookworm/Trixie).
+# Append these to the bottom of the file, then reboot.
+#
+# Full setup guide: docs/pi-setup.md
+
+# --- I2S audio ---
+# Enables the I2S MEMS microphone and I2S amplifier on the shared I2S bus.
+# GPIO 18 = BCLK, GPIO 19 = LRCLK, GPIO 20 = MIC DOUT, GPIO 21 = AMP DIN
+dtoverlay=i2s-mmap
+dtoverlay=googlevoicehat-soundcard
+
+# --- Camera ---
+# Pi Camera v2 (IMX219). Already enabled by default on Pi OS but listed for clarity.
+# camera_auto_detect=1  (default on modern Pi OS, no action needed)
+
+# --- Hardware PWM for servo on GPIO 12 (PWM1) ---
+# dtoverlay=pwm,pin=12,func=4
+# (Not needed if using software PWM via RPi.GPIO - only required for pigpio HW PWM)
+
+# --- USB gadget Ethernet for headless SSH ---
+# Enable in /boot/firmware/cmdline.txt by appending: modules-load=dwc2,g_ether
+# and in config.txt:
+dtoverlay=dwc2

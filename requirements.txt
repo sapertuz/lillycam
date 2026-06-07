@@ -1,0 +1,19 @@
+# Pi deployment dependencies
+# Generated for Raspberry Pi Zero W v1.1, 32-bit Raspberry Pi OS Trixie, Python 3.11+
+# Install with: pip install -r requirements.txt
+
+flask>=3.0
+pigpio>=1.78
+picamera2>=0.3
+RPi.GPIO>=0.7
+gpiozero>=2.0
+luma.oled>=3.13
+luma.core>=2.4
+smbus2>=0.4
+sounddevice>=0.4
+numpy>=1.26
+python-dotenv>=1.0
+
+# Dev/test (optional, can skip on Pi)
+# pytest>=7.0
+# pytest-mock>=3.0

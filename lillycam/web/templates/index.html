@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LillyCam</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <h1>LillyCam 🐱</h1>
+  </header>
+
+  <main>
+    <section class="stream-section">
+      <img id="stream" src="/stream" alt="Live camera feed">
+    </section>
+
+    <section class="controls">
+      <div class="control-group">
+        <h2>Treats</h2>
+        <button id="btn-dispense" class="btn btn-primary">Dispense</button>
+        <button id="btn-reverse" class="btn">Unstuck</button>
+        <span id="dispense-status"></span>
+      </div>
+
+      <div class="control-group">
+        <h2>Rotate</h2>
+        <input id="servo-slider" type="range" min="0" max="180" value="90" step="1">
+        <span id="servo-angle-label">90&deg;</span>
+      </div>
+
+      <div class="control-group">
+        <h2>Talk</h2>
+        <button id="btn-ptt" class="btn btn-ptt">Hold to Talk</button>
+        <span id="ptt-status"></span>
+      </div>
+
+      <div class="control-group">
+        <h2>Camera</h2>
+        <button id="btn-capture" class="btn">Capture Still</button>
+        <div id="capture-status"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}?v=6"></script>
+</body>
+</html>

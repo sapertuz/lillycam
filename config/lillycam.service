@@ -1,0 +1,21 @@
+[Unit]
+Description=LillyCam - cat treat dispenser and remote monitor
+After=network-online.target pigpiod.service
+Wants=network-online.target pigpiod.service
+
+[Service]
+Type=simple
+User=admin
+WorkingDirectory=/home/admin/lillycam
+ExecStart=/home/admin/lillycam/.venv/bin/python -m lillycam
+Restart=on-failure
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=lillycam
+
+# Give the I2S driver time to be ready after boot
+ExecStartPre=/bin/sleep 3
+
+[Install]
+WantedBy=multi-user.target

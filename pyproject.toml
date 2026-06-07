@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lillycam"
+version = "1.0.0"
+description = "DIY cat treat dispenser with live camera, two-way audio, and remote control"
+readme = "readme.md"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Sergio Pertuz" }]
+requires-python = ">=3.11"
+dependencies = [
+    "flask>=3.0",
+    "pigpio>=1.78",
+    "picamera2>=0.3",
+    "RPi.GPIO>=0.7",
+    "gpiozero>=2.0",
+    "luma.oled>=3.13",
+    "luma.core>=2.4",
+    "smbus2>=0.4",
+    "sounddevice>=0.4",
+    "numpy>=1.26",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-mock>=3.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["lillycam*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

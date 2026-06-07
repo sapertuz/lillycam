@@ -1,0 +1,1326 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="680"
+   height="640"
+   viewBox="0 0 680 640"
+   role="img"
+   style=""
+   version="1.1"
+   id="svg96"
+   sodipodi:docname="lillycam_hat_pinout.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview96"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.99320071"
+     inkscape:cx="287.45449"
+     inkscape:cy="359.94739"
+     inkscape:window-width="1728"
+     inkscape:window-height="1088"
+     inkscape:window-x="2053"
+     inkscape:window-y="253"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg96" />
+  <title
+     style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"
+     id="title1">Pi Zero W v1.1 HAT pinout for the treat dispenser</title>
+  <desc
+     style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"
+     id="desc1">40-pin GPIO header showing pin assignments for stepper motor, servo, I2S audio, I2C OLED, and power connections.</desc>
+  <defs
+     id="defs1">
+    <marker
+       id="arrow"
+       viewBox="0 0 10 10"
+       refX="8"
+       refY="5"
+       markerWidth="6"
+       markerHeight="6"
+       orient="auto-start-reverse">
+      <path
+         d="M2 1L8 5L2 9"
+         fill="none"
+         stroke="context-stroke"
+         stroke-width="1.5"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         id="path1" />
+    </marker>
+  </defs>
+  <!-- PCB board outline -->
+  <!-- Mounting holes -->
+  <!-- CSI connector at bottom -->
+  <!-- Header background -->
+  <!-- Pin 1 marker -->
+  <!-- Row 1: Pin 1 (3V3) / Pin 2 (5V) -->
+  <!-- Labels -->
+  <!-- Row 2: Pin 3 (SDA) / Pin 4 (5V) -->
+  <!-- Row 3: Pin 5 (SCL) / Pin 6 (GND) -->
+  <!-- Row 4: Pin 7 (GPIO4 free) / Pin 8 (UART TX) -->
+  <!-- Row 5: Pin 9 (GND) / Pin 10 (UART RX) -->
+  <!-- Row 6: Pin 11 (Stepper IN1) / Pin 12 (I2S BCLK) -->
+  <!-- Row 7: Pin 13 (Stepper IN2) / Pin 14 (GND) -->
+  <!-- Row 8: Pin 15 (Stepper IN3) / Pin 16 (Stepper IN4) -->
+  <!-- Row 9: Pin 17 (3V3) / Pin 18 (free) -->
+  <!-- Row 10: Pin 19 (free) / Pin 20 (GND) -->
+  <!-- Row 11: Pin 21 (free) / Pin 22 (free) -->
+  <!-- Row 12: Pin 23 (free) / Pin 24 (free) -->
+  <!-- Row 13: Pin 25 (GND) / Pin 26 (free) -->
+  <!-- Row 14: Pin 27 (ID_SD) / Pin 28 (ID_SC) -->
+  <!-- Row 15: Pin 29 (free) / Pin 30 (GND) -->
+  <!-- Row 16: Pin 31 (free) / Pin 32 (Servo PWM) -->
+  <!-- Row 17: Pin 33 (free) / Pin 34 (GND) -->
+  <!-- Row 18: Pin 35 (I2S LRCLK) / Pin 36 (free) -->
+  <!-- Row 19: Pin 37 (free) / Pin 38 (mic DOUT) -->
+  <!-- Row 20: Pin 39 (GND) / Pin 40 (amp DIN) -->
+  <g
+     id="g97"
+     transform="translate(4.3095703)">
+    <rect
+       x="210.02083"
+       y="14.02083"
+       width="259.95834"
+       height="591.63342"
+       rx="11.998077"
+       fill="#1a3a1a"
+       stroke="#2d5a2d"
+       stroke-width="1.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#1a3a1a;stroke:#2d5a2d;stroke-width:1.54166px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="rect1" />
+    <rect
+       x="216.00711"
+       y="20.007311"
+       width="247.98578"
+       height="578.97174"
+       rx="8.9994841"
+       fill="none"
+       stroke="#2d5a2d"
+       stroke-width="0.5"
+       stroke-dasharray="4 2"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:none;stroke:#2d5a2d;stroke-width:0.51392px;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:4.11136px, 2.05568px"
+       id="rect2" />
+    <circle
+       cx="230"
+       cy="34"
+       r="5"
+       fill="var(--color-background-primary)"
+       stroke="#2d5a2d"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#30302e;stroke:#2d5a2d;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle2" />
+    <circle
+       cx="450"
+       cy="34"
+       r="5"
+       fill="var(--color-background-primary)"
+       stroke="#2d5a2d"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#30302e;stroke:#2d5a2d;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle3" />
+    <circle
+       cx="230"
+       cy="586"
+       r="5"
+       fill="var(--color-background-primary)"
+       stroke="#2d5a2d"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#30302e;stroke:#2d5a2d;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle4" />
+    <circle
+       cx="450"
+       cy="586"
+       r="5"
+       fill="var(--color-background-primary)"
+       stroke="#2d5a2d"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#30302e;stroke:#2d5a2d;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle5" />
+    <rect
+       x="295"
+       y="52"
+       width="90"
+       height="523.70441"
+       rx="4"
+       fill="var(--color-background-tertiary)"
+       stroke="var(--color-border-tertiary)"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#141413;stroke-width:0.506673px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="rect6" />
+    <rect
+       x="300"
+       y="58"
+       width="10"
+       height="10"
+       rx="2"
+       fill="none"
+       stroke="var(--color-text-secondary)"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:none;stroke:#c2c0b6;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="rect7" />
+    <circle
+       cx="315"
+       cy="68"
+       r="8"
+       fill="#D8570018"
+       stroke="#D85A30"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#d85a30;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle7" />
+    <text
+       x="315"
+       y="68"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#D85A30"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text7">1</text>
+    <circle
+       cx="365"
+       cy="68"
+       r="8"
+       fill="#E24B4A18"
+       stroke="#E24B4A"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#e24b4a;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle8" />
+    <text
+       x="365"
+       y="68"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#E24B4A"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text8">2</text>
+    <text
+       x="200"
+       y="68"
+       text-anchor="end"
+       dominant-baseline="central"
+       fill="#D85A30"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:end;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text9">3V3</text>
+    <text
+       x="480"
+       y="68"
+       text-anchor="start"
+       dominant-baseline="central"
+       fill="#E24B4A"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:start;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text10">5V ← power in</text>
+    <circle
+       cx="315"
+       cy="94"
+       r="8"
+       fill="#1D9E7518"
+       stroke="#1D9E75"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#1d9e75;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle10" />
+    <text
+       x="315"
+       y="94"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#1D9E75"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text11">3</text>
+    <circle
+       cx="365"
+       cy="94"
+       r="8"
+       fill="#E24B4A18"
+       stroke="#E24B4A"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#e24b4a;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle11" />
+    <text
+       x="365"
+       y="94"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#E24B4A"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text12">4</text>
+    <text
+       x="200"
+       y="94"
+       text-anchor="end"
+       dominant-baseline="central"
+       fill="#1D9E75"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:end;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text13">GPIO 2 · OLED SDA</text>
+    <text
+       x="480"
+       y="94"
+       text-anchor="start"
+       dominant-baseline="central"
+       fill="#E24B4A"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:start;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text14">5V</text>
+    <circle
+       cx="315"
+       cy="120"
+       r="8"
+       fill="#1D9E7518"
+       stroke="#1D9E75"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#1d9e75;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle14" />
+    <text
+       x="315"
+       y="120"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#1D9E75"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text15">5</text>
+    <circle
+       cx="365"
+       cy="120"
+       r="8"
+       fill="#88878018"
+       stroke="#888780"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#888780;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle15" />
+    <text
+       x="365"
+       y="120"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#888780"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text16">6</text>
+    <text
+       x="200"
+       y="120"
+       text-anchor="end"
+       dominant-baseline="central"
+       fill="#1D9E75"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:end;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text17">GPIO 3 · OLED SCL</text>
+    <text
+       x="480"
+       y="120"
+       text-anchor="start"
+       dominant-baseline="central"
+       fill="#888780"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:start;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text18">GND</text>
+    <circle
+       cx="315"
+       cy="146"
+       r="8"
+       fill="#63992218"
+       stroke="#639922"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#639922;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle18" />
+    <text
+       x="315"
+       y="146"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#639922"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text19">7</text>
+    <circle
+       cx="365"
+       cy="146"
+       r="8"
+       fill="#5F5E5A18"
+       stroke="#5F5E5A"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#5f5e5a;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle19" />
+    <text
+       x="365"
+       y="146"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#5F5E5A"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text20">8</text>
+    <text
+       x="200"
+       y="146"
+       text-anchor="end"
+       dominant-baseline="central"
+       fill="#639922"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:end;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text21">GPIO 4 · free</text>
+    <text
+       x="480"
+       y="146"
+       text-anchor="start"
+       dominant-baseline="central"
+       fill="#5F5E5A"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:start;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text22">GPIO 14 · UART TX</text>
+    <circle
+       cx="315"
+       cy="172"
+       r="8"
+       fill="#88878018"
+       stroke="#888780"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#888780;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle22" />
+    <text
+       x="315"
+       y="172"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#888780"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text23">9</text>
+    <circle
+       cx="365"
+       cy="172"
+       r="8"
+       fill="#5F5E5A18"
+       stroke="#5F5E5A"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#5f5e5a;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle23" />
+    <text
+       x="365"
+       y="172"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#5F5E5A"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text24">10</text>
+    <text
+       x="200"
+       y="172"
+       text-anchor="end"
+       dominant-baseline="central"
+       fill="#888780"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:end;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text25">GND</text>
+    <text
+       x="480"
+       y="172"
+       text-anchor="start"
+       dominant-baseline="central"
+       fill="#5F5E5A"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:start;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text26">GPIO 15 · UART RX</text>
+    <circle
+       cx="315"
+       cy="198"
+       r="8"
+       fill="#EF9F2718"
+       stroke="#EF9F27"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#ef9f27;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle26" />
+    <text
+       x="315"
+       y="198"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#BA7517"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text27">11</text>
+    <circle
+       cx="365"
+       cy="198"
+       r="8"
+       fill="#7F77DD18"
+       stroke="#7F77DD"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#7f77dd;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle27" />
+    <text
+       x="365"
+       y="198"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#7F77DD"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text28">12</text>
+    <text
+       x="200"
+       y="198"
+       text-anchor="end"
+       dominant-baseline="central"
+       fill="#BA7517"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:end;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text29">GPIO 17 · stepper IN1</text>
+    <text
+       x="480"
+       y="198"
+       text-anchor="start"
+       dominant-baseline="central"
+       fill="#7F77DD"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:start;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text30">GPIO 18 · I2S BCLK</text>
+    <circle
+       cx="315"
+       cy="224"
+       r="8"
+       fill="#EF9F2718"
+       stroke="#EF9F27"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#ef9f27;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle30" />
+    <text
+       x="315"
+       y="224"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#BA7517"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text31">13</text>
+    <circle
+       cx="365"
+       cy="224"
+       r="8"
+       fill="#88878018"
+       stroke="#888780"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#888780;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle31" />
+    <text
+       x="365"
+       y="224"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#888780"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text32">14</text>
+    <text
+       x="200"
+       y="224"
+       text-anchor="end"
+       dominant-baseline="central"
+       fill="#BA7517"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:end;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text33">GPIO 27 · stepper IN2</text>
+    <text
+       x="480"
+       y="224"
+       text-anchor="start"
+       dominant-baseline="central"
+       fill="#888780"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:start;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text34">GND</text>
+    <circle
+       cx="315"
+       cy="250"
+       r="8"
+       fill="#EF9F2718"
+       stroke="#EF9F27"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#ef9f27;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle34" />
+    <text
+       x="315"
+       y="250"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#BA7517"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text35">15</text>
+    <circle
+       cx="365"
+       cy="250"
+       r="8"
+       fill="#EF9F2718"
+       stroke="#EF9F27"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#ef9f27;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle35" />
+    <text
+       x="365"
+       y="250"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#BA7517"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text36">16</text>
+    <text
+       x="200"
+       y="250"
+       text-anchor="end"
+       dominant-baseline="central"
+       fill="#BA7517"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:end;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text37">GPIO 22 · stepper IN3</text>
+    <text
+       x="480"
+       y="250"
+       text-anchor="start"
+       dominant-baseline="central"
+       fill="#BA7517"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:start;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text38">GPIO 23 · stepper IN4</text>
+    <circle
+       cx="315"
+       cy="276"
+       r="8"
+       fill="#D8570018"
+       stroke="#D85A30"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#d85a30;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle38" />
+    <text
+       x="315"
+       y="276"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#D85A30"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text39">17</text>
+    <circle
+       cx="365"
+       cy="276"
+       r="8"
+       fill="#63992218"
+       stroke="#639922"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#639922;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle39" />
+    <text
+       x="365"
+       y="276"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#639922"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text40">18</text>
+    <text
+       x="200"
+       y="276"
+       text-anchor="end"
+       dominant-baseline="central"
+       fill="#D85A30"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:end;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text41">3V3</text>
+    <text
+       x="480"
+       y="276"
+       text-anchor="start"
+       dominant-baseline="central"
+       fill="#639922"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:start;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text42">GPIO 24 · free</text>
+    <circle
+       cx="315"
+       cy="302"
+       r="8"
+       fill="#63992218"
+       stroke="#639922"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#639922;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle42" />
+    <text
+       x="315"
+       y="302"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#639922"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text43">19</text>
+    <circle
+       cx="365"
+       cy="302"
+       r="8"
+       fill="#88878018"
+       stroke="#888780"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#888780;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle43" />
+    <text
+       x="365"
+       y="302"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#888780"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text44">20</text>
+    <text
+       x="200"
+       y="302"
+       text-anchor="end"
+       dominant-baseline="central"
+       fill="#639922"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:end;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text45">GPIO 10 · free</text>
+    <text
+       x="480"
+       y="302"
+       text-anchor="start"
+       dominant-baseline="central"
+       fill="#888780"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:start;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text46">GND</text>
+    <circle
+       cx="315"
+       cy="328"
+       r="8"
+       fill="#63992218"
+       stroke="#639922"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#639922;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle46" />
+    <text
+       x="315"
+       y="328"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#639922"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text47">21</text>
+    <circle
+       cx="365"
+       cy="328"
+       r="8"
+       fill="#63992218"
+       stroke="#639922"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#639922;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle47" />
+    <text
+       x="365"
+       y="328"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#639922"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text48">22</text>
+    <text
+       x="200"
+       y="328"
+       text-anchor="end"
+       dominant-baseline="central"
+       fill="#639922"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:end;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text49">GPIO 9 · free</text>
+    <text
+       x="480"
+       y="328"
+       text-anchor="start"
+       dominant-baseline="central"
+       fill="#639922"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:start;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text50">GPIO 25 · free</text>
+    <circle
+       cx="315"
+       cy="354"
+       r="8"
+       fill="#63992218"
+       stroke="#639922"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#639922;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle50" />
+    <text
+       x="315"
+       y="354"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#639922"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text51">23</text>
+    <circle
+       cx="365"
+       cy="354"
+       r="8"
+       fill="#63992218"
+       stroke="#639922"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#639922;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle51" />
+    <text
+       x="365"
+       y="354"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#639922"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text52">24</text>
+    <text
+       x="200"
+       y="354"
+       text-anchor="end"
+       dominant-baseline="central"
+       fill="#639922"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:end;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text53">GPIO 11 · free</text>
+    <text
+       x="480"
+       y="354"
+       text-anchor="start"
+       dominant-baseline="central"
+       fill="#639922"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:start;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text54">GPIO 8 · free</text>
+    <circle
+       cx="315"
+       cy="380"
+       r="8"
+       fill="#88878018"
+       stroke="#888780"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#888780;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle54" />
+    <text
+       x="315"
+       y="380"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#888780"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text55">25</text>
+    <circle
+       cx="365"
+       cy="380"
+       r="8"
+       fill="#63992218"
+       stroke="#639922"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#639922;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle55" />
+    <text
+       x="365"
+       y="380"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#639922"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text56">26</text>
+    <text
+       x="200"
+       y="380"
+       text-anchor="end"
+       dominant-baseline="central"
+       fill="#888780"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:end;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text57">GND</text>
+    <text
+       x="480"
+       y="380"
+       text-anchor="start"
+       dominant-baseline="central"
+       fill="#639922"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:start;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text58">GPIO 7 · free</text>
+    <circle
+       cx="315"
+       cy="406"
+       r="8"
+       fill="#5F5E5A18"
+       stroke="#5F5E5A"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#5f5e5a;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle58" />
+    <text
+       x="315"
+       y="406"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#5F5E5A"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text59">27</text>
+    <circle
+       cx="365"
+       cy="406"
+       r="8"
+       fill="#5F5E5A18"
+       stroke="#5F5E5A"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#5f5e5a;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle59" />
+    <text
+       x="365"
+       y="406"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#5F5E5A"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text60">28</text>
+    <text
+       x="200"
+       y="406"
+       text-anchor="end"
+       dominant-baseline="central"
+       fill="#5F5E5A"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:end;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text61">ID_SD · HAT EEPROM</text>
+    <text
+       x="480"
+       y="406"
+       text-anchor="start"
+       dominant-baseline="central"
+       fill="#5F5E5A"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:start;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text62">ID_SC · HAT EEPROM</text>
+    <circle
+       cx="315"
+       cy="432"
+       r="8"
+       fill="#63992218"
+       stroke="#639922"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#639922;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle62" />
+    <text
+       x="315"
+       y="432"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#639922"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text63">29</text>
+    <circle
+       cx="365"
+       cy="432"
+       r="8"
+       fill="#88878018"
+       stroke="#888780"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#888780;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle63" />
+    <text
+       x="365"
+       y="432"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#888780"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text64">30</text>
+    <text
+       x="200"
+       y="432"
+       text-anchor="end"
+       dominant-baseline="central"
+       fill="#639922"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:end;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text65">GPIO 5 · free</text>
+    <text
+       x="480"
+       y="432"
+       text-anchor="start"
+       dominant-baseline="central"
+       fill="#888780"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:start;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text66">GND</text>
+    <circle
+       cx="315"
+       cy="458"
+       r="8"
+       fill="#63992218"
+       stroke="#639922"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#639922;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle66" />
+    <text
+       x="315"
+       y="458"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#639922"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text67">31</text>
+    <circle
+       cx="365"
+       cy="458"
+       r="8"
+       fill="#378ADD18"
+       stroke="#378ADD"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#378add;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle67" />
+    <text
+       x="365"
+       y="458"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#378ADD"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text68">32</text>
+    <text
+       x="200"
+       y="458"
+       text-anchor="end"
+       dominant-baseline="central"
+       fill="#639922"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:end;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text69">GPIO 6 · free</text>
+    <text
+       x="480"
+       y="458"
+       text-anchor="start"
+       dominant-baseline="central"
+       fill="#378ADD"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:start;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text70">GPIO 12 · servo PWM1</text>
+    <circle
+       cx="315"
+       cy="484"
+       r="8"
+       fill="#63992218"
+       stroke="#639922"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#639922;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle70" />
+    <text
+       x="315"
+       y="484"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#639922"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text71">33</text>
+    <circle
+       cx="365"
+       cy="484"
+       r="8"
+       fill="#88878018"
+       stroke="#888780"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#888780;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle71" />
+    <text
+       x="365"
+       y="484"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#888780"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text72">34</text>
+    <text
+       x="200"
+       y="484"
+       text-anchor="end"
+       dominant-baseline="central"
+       fill="#639922"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:end;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text73">GPIO 13 · free</text>
+    <text
+       x="480"
+       y="484"
+       text-anchor="start"
+       dominant-baseline="central"
+       fill="#888780"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:start;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text74">GND</text>
+    <circle
+       cx="315"
+       cy="510"
+       r="8"
+       fill="#7F77DD18"
+       stroke="#7F77DD"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#7f77dd;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle74" />
+    <text
+       x="315"
+       y="510"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#7F77DD"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text75">35</text>
+    <circle
+       cx="365"
+       cy="510"
+       r="8"
+       fill="#63992218"
+       stroke="#639922"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#639922;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle75" />
+    <text
+       x="365"
+       y="510"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#639922"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text76">36</text>
+    <text
+       x="200"
+       y="510"
+       text-anchor="end"
+       dominant-baseline="central"
+       fill="#7F77DD"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:end;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text77">GPIO 19 · I2S LRCLK</text>
+    <text
+       x="480"
+       y="510"
+       text-anchor="start"
+       dominant-baseline="central"
+       fill="#639922"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:start;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text78">GPIO 16 · free</text>
+    <circle
+       cx="315"
+       cy="536"
+       r="8"
+       fill="#63992218"
+       stroke="#639922"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#639922;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle78" />
+    <text
+       x="315"
+       y="536"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#639922"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text79">37</text>
+    <circle
+       cx="365"
+       cy="536"
+       r="8"
+       fill="#D4537E18"
+       stroke="#D4537E"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#d4537e;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle79" />
+    <text
+       x="365"
+       y="536"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#D4537E"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text80">38</text>
+    <text
+       x="200"
+       y="536"
+       text-anchor="end"
+       dominant-baseline="central"
+       fill="#639922"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:end;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text81">GPIO 26 · free</text>
+    <text
+       x="480"
+       y="536"
+       text-anchor="start"
+       dominant-baseline="central"
+       fill="#D4537E"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:start;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text82">GPIO 20 · mic DOUT</text>
+    <circle
+       cx="315"
+       cy="562"
+       r="8"
+       fill="#88878018"
+       stroke="#888780"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#888780;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle82" />
+    <text
+       x="315"
+       y="562"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#888780"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text83">39</text>
+    <circle
+       cx="365"
+       cy="562"
+       r="8"
+       fill="#7F77DD18"
+       stroke="#7F77DD"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#7f77dd;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle83" />
+    <text
+       x="365"
+       y="562"
+       text-anchor="middle"
+       dominant-baseline="central"
+       fill="#7F77DD"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:middle;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text84">40</text>
+    <text
+       x="200"
+       y="562"
+       text-anchor="end"
+       dominant-baseline="central"
+       fill="#888780"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:end;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text85">GND</text>
+    <text
+       x="480"
+       y="562"
+       text-anchor="start"
+       dominant-baseline="central"
+       fill="#7F77DD"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:central;text-anchor:start;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text86">GPIO 21 · amp DIN</text>
+  </g>
+  <!-- Legend -->
+  <g
+     id="g96"
+     transform="translate(26.822266)">
+    <circle
+       cx="56"
+       cy="628"
+       r="5"
+       fill="#EF9F2718"
+       stroke="#EF9F27"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#ef9f27;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle86" />
+    <text
+       x="66"
+       y="632"
+       fill="#BA7517"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text87">Stepper</text>
+    <circle
+       cx="130"
+       cy="628"
+       r="5"
+       fill="#378ADD18"
+       stroke="#378ADD"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#378add;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle87" />
+    <text
+       x="140"
+       y="632"
+       fill="#378ADD"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text88">Servo</text>
+    <circle
+       cx="190"
+       cy="628"
+       r="5"
+       fill="#7F77DD18"
+       stroke="#7F77DD"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#7f77dd;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle88" />
+    <text
+       x="200"
+       y="632"
+       fill="#7F77DD"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text89">I2S bus</text>
+    <circle
+       cx="254"
+       cy="628"
+       r="5"
+       fill="#D4537E18"
+       stroke="#D4537E"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#d4537e;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle89" />
+    <text
+       x="264"
+       y="632"
+       fill="#D4537E"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text90">Mic</text>
+    <circle
+       cx="302"
+       cy="628"
+       r="5"
+       fill="#1D9E7518"
+       stroke="#1D9E75"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#1d9e75;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle90" />
+    <text
+       x="312"
+       y="632"
+       fill="#1D9E75"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text91">I2C</text>
+    <circle
+       cx="348"
+       cy="628"
+       r="5"
+       fill="#E24B4A18"
+       stroke="#E24B4A"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#e24b4a;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle91" />
+    <text
+       x="358"
+       y="632"
+       fill="#E24B4A"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text92">5V</text>
+    <circle
+       cx="384"
+       cy="628"
+       r="5"
+       fill="#D8570018"
+       stroke="#D85A30"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#d85a30;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle92" />
+    <text
+       x="394"
+       y="632"
+       fill="#D85A30"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text93">3V3</text>
+    <circle
+       cx="430"
+       cy="628"
+       r="5"
+       fill="#88878018"
+       stroke="#888780"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#888780;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle93" />
+    <text
+       x="440"
+       y="632"
+       fill="#888780"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text94">GND</text>
+    <circle
+       cx="476"
+       cy="628"
+       r="5"
+       fill="#63992218"
+       stroke="#639922"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#639922;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle94" />
+    <text
+       x="486"
+       y="632"
+       fill="#639922"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text95">Free</text>
+    <circle
+       cx="522"
+       cy="628"
+       r="5"
+       fill="#5F5E5A18"
+       stroke="#5F5E5A"
+       stroke-width="0.5"
+       style="color:#ffffff;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;stroke:#5f5e5a;stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="circle95" />
+    <text
+       x="532"
+       y="632"
+       fill="#5F5E5A"
+       style="color:#ffffff;font-weight:400;font-size:12px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:1;fill:#c2c0b6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+       id="text96">Reserved</text>
+  </g>
+</svg>
