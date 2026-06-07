@@ -17,7 +17,7 @@ self-contained enough that someone with the same hardware can clone it and get i
 
 - **Compute:** Raspberry Pi Zero W v1.1 (single-core BCM2835, 512MB RAM, 32-bit OS)
 - **Camera:** Pi Camera v2 (IMX219) via CSI ribbon
-- **Stepper:** 28BYJ-48 5V unipolar stepper via ULN2003 driver board (half-step sequence)
+- **Stepper:** 28BYJ-48 5V unipolar stepper via ULN2003 driver board (full-step sequence)
 - **Servo:** SG90 on GPIO 12 (hardware PWM1) for base rotation
 - **Mic:** INMP441 I2S MEMS (bottom-port, acoustic inlet on solder-pad side)
 - **Speaker:** MAX98357A I2S amp + 25×35mm 4Ω 3W speaker
@@ -71,7 +71,21 @@ Summary by subsystem:
   the extra complexity isn't justified for local/Tailscale use. CPU load is ~40-44%.
 - **Half-duplex audio**: the Zero W can't handle full-duplex mic+speaker simultaneously.
   Walkie-talkie (push-to-talk) style.
-- **OLED is static text only**: no animations, just status info (IP, stream URL, last dispense time).
+- **OLED shows an animated cat face**: a Popcat-style cat occupies the left third (sleeps when
+  the camera is off, wakes and blinks when on, "pops" its mouth on dispense/camera-on events).
+  Status text (camera state, IP:port, last dispense) fills the right side. A background thread
+  repaints at `OLED_FPS` (default 6, kept low for the single-core Pi). Set `OLED_ANIMATE=false`
+  for static text only.
+- **Camera off by default**: the stream does not auto-start at boot (privacy). It is turned on
+  from the web UI (`/camera/on`), which also wakes the OLED cat and plays a chirp. Override with
+  `CAMERA_AUTOSTART=true`.
+- **Single-connection control lock**: only one device controls LillyCam at a time (one MJPEG
+  stream consumer on the single-core Pi, and no two clients fighting over the servo/dispenser).
+  A device claims control via a Flask-session token, keeps it with heartbeats, and auto-releases
+  after `CONTROL_TIMEOUT` (default 15s) of silence. A second device sees a lock screen and can
+  force a takeover (which bumps the previous holder). All control routes and `/stream` are guarded
+  and return `423` to non-holders. The lock is a process-wide singleton in `lillycam/control.py`,
+  shared by the routes and the OLED (which shows `in use` / `idle` on line 2 instead of the IP).
 - **No src/ layout**: this is an appliance you clone and run, not a PyPI package. Flat layout
   with a `lillycam/` package directory at the root.
 - **GPIO 18 conflict resolution**: servo uses GPIO 12 (PWM1) so GPIO 18 is free for I2S BCLK.

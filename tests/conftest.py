@@ -21,12 +21,17 @@ def _make_mock(name: str) -> MagicMock:
 
 
 # RPi.GPIO
+# Note: `import RPi.GPIO as GPIO` binds GPIO via attribute access on the RPi
+# package mock, so RPi.GPIO must point at the SAME object as sys.modules["RPi.GPIO"];
+# otherwise the code under test drives an auto-created child mock instead of this one.
 gpio_mock = _make_mock("RPi.GPIO")
 gpio_mock.BCM = 11
 gpio_mock.OUT = 0
 gpio_mock.LOW = 0
 gpio_mock.HIGH = 1
-sys.modules["RPi"] = _make_mock("RPi")
+rpi_mock = _make_mock("RPi")
+rpi_mock.GPIO = gpio_mock
+sys.modules["RPi"] = rpi_mock
 sys.modules["RPi.GPIO"] = gpio_mock
 
 # gpiozero

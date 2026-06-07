@@ -4,46 +4,63 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LillyCam</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=8">
 </head>
 <body>
   <header>
-    <h1>LillyCam 🐱</h1>
+    <h1>🐾 LillyCam</h1>
+    <span id="cam-badge" class="badge">😴 napping</span>
   </header>
 
+  <div id="lock-screen" class="lock-screen">
+    <div class="lock-card">
+      <div class="lock-emoji">🔒</div>
+      <h2 id="lock-title">LillyCam is in use</h2>
+      <p id="lock-sub">by another device</p>
+      <button id="btn-take" class="btn btn-primary">Take Control</button>
+    </div>
+  </div>
+
   <main>
-    <section class="stream-section">
-      <img id="stream" src="/stream" alt="Live camera feed">
+    <section class="stream-card">
+      <div class="stream-wrap" id="stream-wrap">
+        <img id="stream" alt="Live camera feed">
+        <div class="stream-off" id="stream-off">
+          <div class="cat-ascii">( =^･ω･^= )</div>
+          <p>the cam is snoozing</p>
+        </div>
+      </div>
+      <button id="btn-cam-toggle" class="btn btn-wake">🐾 Wake the Cam</button>
     </section>
 
     <section class="controls">
       <div class="control-group">
-        <h2>Treats</h2>
+        <h2>🍬 Treats</h2>
         <button id="btn-dispense" class="btn btn-primary">Dispense</button>
         <button id="btn-reverse" class="btn">Unstuck</button>
-        <span id="dispense-status"></span>
+        <span id="dispense-status" class="status"></span>
       </div>
 
       <div class="control-group">
-        <h2>Rotate</h2>
+        <h2>🔄 Spin</h2>
         <input id="servo-slider" type="range" min="0" max="180" value="90" step="1">
-        <span id="servo-angle-label">90&deg;</span>
+        <span id="servo-angle-label" class="status">90&deg;</span>
       </div>
 
       <div class="control-group">
-        <h2>Talk</h2>
+        <h2>🎙️ Mew</h2>
         <button id="btn-ptt" class="btn btn-ptt">Hold to Talk</button>
-        <span id="ptt-status"></span>
+        <span id="ptt-status" class="status"></span>
       </div>
 
       <div class="control-group">
-        <h2>Camera</h2>
+        <h2>📷 Snapshot</h2>
         <button id="btn-capture" class="btn">Capture Still</button>
-        <div id="capture-status"></div>
+        <div id="capture-status" class="status"></div>
       </div>
     </section>
   </main>
 
-  <script src="{{ url_for('static', filename='app.js') }}?v=6"></script>
+  <script src="{{ url_for('static', filename='app.js') }}?v=8"></script>
 </body>
 </html>

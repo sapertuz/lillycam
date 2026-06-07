@@ -27,6 +27,12 @@ class Camera:
         self._cam = None
         self._lock = threading.Lock()
         self._streaming = False
+        self._output = None
+
+    @property
+    def is_streaming(self) -> bool:
+        """True while the MJPEG stream is running."""
+        return self._streaming
 
     def start_stream(self) -> None:
         """Start MJPEG streaming at configured resolution."""
@@ -64,12 +70,19 @@ class Camera:
             self._cam.stop_recording()
             self._cam.close()
             self._cam = None
+            self._output = None
             self._streaming = False
             log.info("Stream stopped")
 
     def get_frame(self, timeout: float = 1.0) -> bytes:
-        """Block until a new MJPEG frame is available, then return it."""
-        return self._output.wait_frame(timeout)
+        """Block until a new MJPEG frame is available, then return it.
+
+        Returns an empty bytes object if the stream is not running.
+        """
+        out = self._output
+        if out is None:
+            return b""
+        return out.wait_frame(timeout)
 
     def capture_still(self) -> Path:
         """Capture a full-resolution still.

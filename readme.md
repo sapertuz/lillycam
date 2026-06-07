@@ -18,11 +18,12 @@ surround. The mic has a paw print. The corner pieces are fish.
 
 ## Features
 
-- **Live video** — 640x480 @ 15fps MJPEG stream via Flask
+- **Live video** — 640x480 @ 15fps MJPEG stream via Flask (off by default at boot; wake it from the web UI)
 - **Treat dispensing** — 28BYJ-48 5V stepper motor with a cylindrical funnel insert
 - **Base rotation** — SG90 servo for panning the whole unit
 - **Two-way audio** — INMP441 I2S mic + MAX98357A amp (half-duplex, push-to-talk)
-- **Status display** — SSD1306 OLED showing IP, stream URL, last dispense time
+- **Status display** — SSD1306 OLED with an animated cat face (sleeps when the camera is off, wakes when on) plus connection status and last dispense time
+- **Single-connection control** — only one device drives LillyCam at a time (saves resources, avoids servo/dispenser conflicts); a second device sees a lock screen and can take over
 - **Full-res stills** — 3280x2464 captures saved with timestamps
 - **Remote access** — Tailscale VPN, accessible from phone or laptop
 - **3D printed enclosure** — cat-themed decorative panels (editable STEP + print-ready STL in [`3d-models/`](3d-models/))

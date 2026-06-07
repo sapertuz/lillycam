@@ -39,6 +39,8 @@ FLASK_PORT: int = _int("FLASK_PORT", 5000)
 FLASK_DEBUG: bool = _bool("FLASK_DEBUG", False)
 
 # --- Camera ---
+CAMERA_AUTOSTART: bool = _bool("CAMERA_AUTOSTART", False)  # off at boot for privacy; turn on from the web UI
+CAMERA_SOUND: bool = _bool("CAMERA_SOUND", True)  # play a chirp when the camera turns on
 STREAM_WIDTH: int = _int("STREAM_WIDTH", 640)
 STREAM_HEIGHT: int = _int("STREAM_HEIGHT", 480)
 STREAM_FPS: int = _int("STREAM_FPS", 15)
@@ -68,6 +70,11 @@ AUDIO_PLAYBACK_GAIN: float = _float("AUDIO_PLAYBACK_GAIN", 2.0)  # linear gain a
 TAILSCALE_CERT: str | None = _str("TAILSCALE_CERT", "") or None
 TAILSCALE_KEY: str | None = _str("TAILSCALE_KEY", "") or None
 
+# --- Control lock ---
+CONTROL_TIMEOUT: float = _float("CONTROL_TIMEOUT", 15.0)  # seconds before an idle controller is auto-released
+
 # --- OLED ---
 OLED_WIDTH: int = _int("OLED_WIDTH", 128)
 OLED_HEIGHT: int = _int("OLED_HEIGHT", 32)
+OLED_ANIMATE: bool = _bool("OLED_ANIMATE", True)  # animated cat face (set false for static text only)
+OLED_FPS: int = _int("OLED_FPS", 6)  # animation refresh rate (keep low; single-core Pi)

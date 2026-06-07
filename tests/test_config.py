@@ -11,7 +11,7 @@ def test_defaults():
     assert cfg.STREAM_WIDTH == 640
     assert cfg.STREAM_HEIGHT == 480
     assert cfg.STREAM_FPS == 15
-    assert cfg.STEPPER_STEPS_PER_DISPENSE == 512
+    assert cfg.STEPPER_STEPS_PER_DISPENSE == 700
     assert cfg.SERVO_DEFAULT_ANGLE == 90
     assert cfg.OLED_WIDTH == 128
     assert cfg.OLED_HEIGHT == 32

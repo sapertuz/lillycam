@@ -1,5 +1,123 @@
 "use strict";
 
+// --- Single-connection control ---
+// Only one device controls LillyCam at a time. We claim a slot on load, keep it
+// alive with heartbeats, and release it on unload. A second device sees a lock
+// screen and can force a takeover.
+const lockTitle = document.getElementById("lock-title");
+const lockSub = document.getElementById("lock-sub");
+const btnTake = document.getElementById("btn-take");
+let haveControl = false;
+let heartbeatTimer = null;
+let statusTimer = null;
+
+async function claim(force) {
+  try {
+    const res = await fetch("/session/claim", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ force: !!force }),
+    });
+    const d = await res.json();
+    if (d.granted) showControl();
+    else showLocked("LillyCam is in use", "by another device");
+  } catch {
+    showLocked("Connection problem", "retrying…");
+  }
+}
+
+function showControl() {
+  haveControl = true;
+  document.body.classList.remove("locked");
+  stopStatusPolling();
+  startHeartbeat();
+  initController();  // sync camera state now that we hold control
+}
+
+function showLocked(title, sub) {
+  haveControl = false;
+  document.body.classList.add("locked");
+  lockTitle.textContent = title;
+  lockSub.textContent = sub;
+  stopHeartbeat();
+  streamImg.removeAttribute("src");  // drop any stream connection
+  startStatusPolling();
+}
+
+function startHeartbeat() {
+  stopHeartbeat();
+  heartbeatTimer = setInterval(async () => {
+    try {
+      const res = await fetch("/session/heartbeat", { method: "POST" });
+      if (res.status === 423) showLocked("You were disconnected", "another device took control");
+    } catch { /* ignore a transient miss; next beat re-checks */ }
+  }, 5000);
+}
+function stopHeartbeat() { clearInterval(heartbeatTimer); heartbeatTimer = null; }
+
+function startStatusPolling() {
+  stopStatusPolling();
+  statusTimer = setInterval(async () => {
+    try {
+      const d = await (await fetch("/session/status")).json();
+      if (!d.in_use) lockSub.textContent = "now free — tap Take Control";
+    } catch { /* ignore */ }
+  }, 3000);
+}
+function stopStatusPolling() { clearInterval(statusTimer); statusTimer = null; }
+
+btnTake.addEventListener("click", () => claim(true));
+
+// Release control when the page goes away so the slot frees immediately.
+window.addEventListener("pagehide", () => {
+  if (haveControl && navigator.sendBeacon) navigator.sendBeacon("/session/release");
+});
+
+// --- Camera wake / sleep ---
+const camToggle = document.getElementById("btn-cam-toggle");
+const streamWrap = document.getElementById("stream-wrap");
+const streamImg = document.getElementById("stream");
+const camBadge = document.getElementById("cam-badge");
+let camOn = false;
+
+function renderCam() {
+  if (camOn) {
+    streamWrap.classList.add("is-on");
+    streamImg.src = "/stream?ts=" + Date.now();  // cache-bust so a fresh MJPEG connection opens
+    camToggle.textContent = "😴 Sleep the Cam";
+    camToggle.classList.add("on");
+    camBadge.textContent = "👀 watching";
+    camBadge.classList.add("on");
+  } else {
+    streamWrap.classList.remove("is-on");
+    streamImg.removeAttribute("src");  // drop the MJPEG connection
+    camToggle.textContent = "🐾 Wake the Cam";
+    camToggle.classList.remove("on");
+    camBadge.textContent = "😴 napping";
+    camBadge.classList.remove("on");
+  }
+}
+
+// Sync camera state from the server once we hold control.
+function initController() {
+  fetch("/camera")
+    .then(r => r.json())
+    .then(d => { camOn = !!d.on; renderCam(); })
+    .catch(() => renderCam());
+}
+
+camToggle.addEventListener("click", async () => {
+  camToggle.disabled = true;
+  try {
+    const res = await fetch(camOn ? "/camera/off" : "/camera/on", { method: "POST" });
+    const d = await res.json();
+    if (res.ok) { camOn = !!d.on; renderCam(); }
+  } catch {
+    /* leave UI as-is on network error */
+  }
+  camToggle.disabled = false;
+});
+
 // --- Dispense ---
 const btnDispense = document.getElementById("btn-dispense");
 const btnReverse = document.getElementById("btn-reverse");
@@ -172,3 +290,6 @@ document.getElementById("btn-capture").addEventListener("click", async () => {
     status.textContent = "Network error";
   }
 });
+
+// --- Boot: claim control (or show the lock screen) ---
+claim(false);

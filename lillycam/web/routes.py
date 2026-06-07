@@ -5,12 +5,65 @@ can include them cleanly. Hardware is accessed via current_app.
 """
 
 import logging
+import uuid
 
-from flask import Blueprint, Response, current_app, jsonify, render_template, request, send_from_directory
+from flask import Blueprint, Response, current_app, jsonify, render_template, request, send_from_directory, session
+
+from lillycam.control import lock
 
 log = logging.getLogger(__name__)
 
 bp = Blueprint("lillycam", __name__)
+
+
+# --- Single-connection control lock ---
+
+def _token() -> str:
+    """Return this browser's control token, minting one into the session if needed."""
+    t = session.get("token")
+    if not t:
+        t = uuid.uuid4().hex
+        session["token"] = t
+    return t
+
+
+def _has_control() -> bool:
+    """True if the caller holds control. Refreshes the hold as a side effect."""
+    return lock.heartbeat(session.get("token"))
+
+
+def _locked_response():
+    """JSON 423 used by guarded routes when the caller does not hold control."""
+    return jsonify(error="LillyCam is controlled by another device"), 423
+
+
+@bp.route("/session/claim", methods=["POST"])
+def session_claim():
+    """Claim control. Body {"force": true} takes it over from another device."""
+    data = request.get_json(silent=True) or {}
+    granted = lock.claim(_token(), force=bool(data.get("force")))
+    return jsonify(granted=granted, in_use=lock.in_use())
+
+
+@bp.route("/session/heartbeat", methods=["POST"])
+def session_heartbeat():
+    """Keep the hold alive. Returns 423 if this device was taken over."""
+    if lock.heartbeat(session.get("token")):
+        return jsonify(ok=True)
+    return jsonify(ok=False, error="lost"), 423
+
+
+@bp.route("/session/release", methods=["POST"])
+def session_release():
+    """Release control (called on page unload via sendBeacon)."""
+    lock.release(session.get("token"))
+    return jsonify(ok=True)
+
+
+@bp.route("/session/status")
+def session_status():
+    """Report whether control is held, and whether by this device."""
+    return jsonify(in_use=lock.in_use(), you_hold=lock.is_holder(session.get("token")))
 
 
 # --- Pages ---
@@ -18,20 +71,64 @@ bp = Blueprint("lillycam", __name__)
 @bp.route("/")
 def index():
     """Main control page."""
+    _token()  # ensure the session cookie exists before the page claims control
     return render_template("index.html")
 
 
 # --- Video stream ---
 
-@bp.route("/stream")
-def stream():
-    """MJPEG stream endpoint. Open in <img src="/stream">."""
+@bp.route("/camera")
+def camera_state():
+    """Return whether the camera/stream is currently on (for UI sync on load)."""
+    cam = current_app.camera
+    return jsonify(on=bool(cam and cam.is_streaming))
+
+
+@bp.route("/camera/on", methods=["POST"])
+def camera_on():
+    """Turn the camera on: start the stream, wake the OLED cat, chirp."""
+    if not _has_control():
+        return _locked_response()
     cam = current_app.camera
     if cam is None:
-        return "Camera not available", 503
+        return jsonify(error="Camera not available"), 503
+    cam.start_stream()
+    if current_app.display:
+        current_app.display.set_camera(True)
+    from lillycam import audio
+    audio.chirp_async()
+    return jsonify(on=True)
+
+
+@bp.route("/camera/off", methods=["POST"])
+def camera_off():
+    """Turn the camera off: stop the stream and put the OLED cat to sleep."""
+    if not _has_control():
+        return _locked_response()
+    cam = current_app.camera
+    if cam is None:
+        return jsonify(error="Camera not available"), 503
+    cam.stop_stream()
+    if current_app.display:
+        current_app.display.set_camera(False)
+    return jsonify(on=False)
+
+
+@bp.route("/stream")
+def stream():
+    """MJPEG stream endpoint. Open in <img src="/stream">.
+
+    Restricted to the controlling device (one stream consumer on the Pi Zero).
+    Returns 503 when the camera is off so the client can show its placeholder.
+    """
+    if not _has_control():
+        return "LillyCam is controlled by another device", 423
+    cam = current_app.camera
+    if cam is None or not cam.is_streaming:
+        return "Camera is off", 503
 
     def generate():
-        while True:
+        while cam.is_streaming:
             frame = cam.get_frame()
             if frame:
                 yield (
@@ -48,6 +145,8 @@ def stream():
 @bp.route("/capture", methods=["POST"])
 def capture():
     """Capture a full-resolution still. Returns JSON with saved path."""
+    if not _has_control():
+        return _locked_response()
     cam = current_app.camera
     if cam is None:
         return jsonify(error="Camera not available"), 503
@@ -67,6 +166,8 @@ def serve_capture(filename):
 @bp.route("/dispense", methods=["POST"])
 def dispense():
     """Trigger one treat dispense cycle."""
+    if not _has_control():
+        return _locked_response()
     stepper = current_app.stepper
     if stepper is None:
         return jsonify(error="Stepper not available"), 503
@@ -80,6 +181,8 @@ def dispense():
 @bp.route("/reverse", methods=["POST"])
 def reverse():
     """Run the stepper in reverse to unstick the dispenser."""
+    if not _has_control():
+        return _locked_response()
     stepper = current_app.stepper
     if stepper is None:
         return jsonify(error="Stepper not available"), 503
@@ -102,6 +205,8 @@ def rotate():
 
     JSON body: {"angle": <float>}
     """
+    if not _has_control():
+        return _locked_response()
     servo = current_app.servo
     if servo is None:
         return jsonify(error="Servo not available"), 503
@@ -120,6 +225,8 @@ def speak():
 
     Expects raw WAV bytes in the request body.
     """
+    if not _has_control():
+        return _locked_response()
     from lillycam import audio, config as cfg
     if not cfg.AUDIO_ENABLED:
         return jsonify(error="Audio disabled"), 503

@@ -30,11 +30,13 @@ def main() -> None:
 
         from lillycam.camera import Camera
         camera = Camera()
-        try:
-            camera.start_stream()
-        except Exception as exc:
-            log.warning("Camera not available: %s", exc)
-            camera = None
+        # Camera stays off at boot by default (privacy); turn it on from the web UI.
+        if config.CAMERA_AUTOSTART:
+            try:
+                camera.start_stream()
+            except Exception as exc:
+                log.warning("Camera not available: %s", exc)
+                camera = None
 
         from lillycam.stepper import Stepper
         stepper = Stepper()
@@ -45,6 +47,7 @@ def main() -> None:
         app = create_app(camera=camera, stepper=stepper, servo=servo, display=display)
 
         display.show_status(port=config.FLASK_PORT)
+        display.set_camera(camera is not None and camera.is_streaming)
         log.info("Ready. Listening on %s:%d", config.FLASK_HOST, config.FLASK_PORT)
 
         ssl_context = None

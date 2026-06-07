@@ -9,6 +9,8 @@ Both use sounddevice with the ALSA I2S devices configured in /etc/asound.conf.
 """
 
 import logging
+import math
+import threading
 from pathlib import Path
 
 import numpy as np
@@ -69,6 +71,42 @@ def play(data: np.ndarray, device: str = _AMP_DEVICE, samplerate: int | None = N
     log.info("Playing %d samples through '%s' at %dHz (gain=%.1f)", len(data), device, samplerate, gain)
     sd.play(data, samplerate=samplerate, device=device, blocking=True)
     log.info("Playback complete")
+
+
+def chirp(device: str = _AMP_DEVICE) -> None:
+    """Play a short ascending two-note chirp (used as the camera-on indicator).
+
+    Blocks for about 0.3s. Use chirp_async() to fire-and-forget from a request.
+    """
+    rate = config.AUDIO_SAMPLE_RATE
+    tone = np.concatenate([_tone(880.0, 0.12, rate), _tone(1318.5, 0.16, rate)])  # A5 -> E6
+    stereo = np.column_stack([tone, tone])  # googlevoicehat I2S driver wants stereo
+    log.info("Camera chirp through '%s'", device)
+    sd.play(stereo, samplerate=rate, device=device, blocking=True)
+
+
+def chirp_async() -> None:
+    """Play the camera-on chirp on a daemon thread so it never blocks the caller."""
+    if not config.AUDIO_ENABLED or not config.CAMERA_SOUND:
+        return
+    threading.Thread(target=_safe_chirp, daemon=True).start()
+
+
+def _safe_chirp() -> None:
+    try:
+        chirp()
+    except Exception as exc:  # speaker is non-critical; never crash the request
+        log.warning("Chirp failed: %s", exc)
+
+
+def _tone(freq: float, seconds: float, rate: int, volume: float = 0.5) -> np.ndarray:
+    """Generate a sine tone with a 10ms fade in/out to avoid clicks."""
+    t = np.linspace(0, seconds, int(rate * seconds), endpoint=False)
+    tone = (volume * np.sin(2 * math.pi * freq * t)).astype(np.float32)
+    fade = int(rate * 0.01)
+    tone[:fade] *= np.linspace(0, 1, fade)
+    tone[-fade:] *= np.linspace(1, 0, fade)
+    return tone
 
 
 def save_wav(data: np.ndarray, path: Path) -> None:

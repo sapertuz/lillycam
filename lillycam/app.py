@@ -5,6 +5,7 @@ to the app context so routes can access them via current_app.
 """
 
 import logging
+import os
 
 from flask import Flask
 
@@ -24,6 +25,9 @@ def create_app(camera=None, stepper=None, servo=None, display=None) -> Flask:
         Configured Flask application.
     """
     app = Flask(__name__, template_folder="web/templates", static_folder="web/static")
+    # Signs the session cookie that carries each device's control token.
+    # A fresh key per boot is fine: it just means clients re-claim after a restart.
+    app.secret_key = os.urandom(24)
 
     # Attach hardware to app context
     app.camera = camera
