@@ -72,6 +72,7 @@ TAILSCALE_KEY: str | None = _str("TAILSCALE_KEY", "") or None
 
 # --- Control lock ---
 CONTROL_TIMEOUT: float = _float("CONTROL_TIMEOUT", 15.0)  # seconds before an idle controller is auto-released
+CAMERA_OFF_ON_IDLE: bool = _bool("CAMERA_OFF_ON_IDLE", True)  # turn the camera off when the last controller leaves
 
 # --- OLED ---
 OLED_WIDTH: int = _int("OLED_WIDTH", 128)

@@ -134,6 +134,27 @@ echo "TAILSCALE_KEY=/home/admin/lillycam/$HOSTNAME.key" >> .env
 ```
 5. Restart LillyCam and open `https://<your-tailscale-hostname>:5000`
 
+**Auto-renew the certificate (recommended):**
+
+Tailscale certs are Let's Encrypt certs (90-day validity) and are **not** renewed
+automatically, so HTTPS silently breaks after ~3 months. Install the bundled timer
+to renew on a schedule (it only reissues when near expiry, and restarts LillyCam
+only if the cert actually changed):
+
+```bash
+# Set your MagicDNS name in the unit, then install and enable it:
+sudo sed "s/lillycam.tailXXXXX.ts.net/$HOSTNAME/" \
+  ~/lillycam/config/lillycam-cert-renew.service | sudo tee /etc/systemd/system/lillycam-cert-renew.service
+sudo cp ~/lillycam/config/lillycam-cert-renew.timer /etc/systemd/system/
+chmod +x ~/lillycam/config/renew-cert.sh
+sudo systemctl daemon-reload
+sudo systemctl enable --now lillycam-cert-renew.timer
+
+# Verify: run it once (should say "still current"), and see the next scheduled run
+sudo systemctl start lillycam-cert-renew.service
+systemctl list-timers lillycam-cert-renew.timer
+```
+
 ## 9. Configure pigpiod for I2S compatibility
 
 pigpiod (required for servo control) uses the PCM peripheral as its DMA clock

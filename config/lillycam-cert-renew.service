@@ -1,0 +1,10 @@
+[Unit]
+Description=Renew LillyCam Tailscale TLS certificate
+After=network-online.target tailscaled.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+# Set this to your Tailscale MagicDNS name (matches your cert filename).
+Environment=TS_CERT_DOMAIN=lillycam.tailXXXXX.ts.net
+ExecStart=/home/admin/lillycam/config/renew-cert.sh

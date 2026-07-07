@@ -86,6 +86,12 @@ Summary by subsystem:
   force a takeover (which bumps the previous holder). All control routes and `/stream` are guarded
   and return `423` to non-holders. The lock is a process-wide singleton in `lillycam/control.py`,
   shared by the routes and the OLED (which shows `in use` / `idle` on line 2 instead of the IP).
+  When the last controller leaves (release or timeout), an `on_release` hook turns the camera off
+  (`CAMERA_OFF_ON_IDLE`, default on) so it never streams with nobody watching. The timeout path is
+  observed passively by the OLED thread's `in_use()` call, so it fires without any web request.
+- **Tailscale TLS auto-renewal**: `tailscale cert` issues 90-day Let's Encrypt certs that are not
+  auto-renewed, so HTTPS breaks after ~3 months. `config/renew-cert.sh` + the `lillycam-cert-renew`
+  systemd timer (weekly) reissue near expiry and restart the service only if the cert changed.
 - **No src/ layout**: this is an appliance you clone and run, not a PyPI package. Flat layout
   with a `lillycam/` package directory at the root.
 - **GPIO 18 conflict resolution**: servo uses GPIO 12 (PWM1) so GPIO 18 is free for I2S BCLK.

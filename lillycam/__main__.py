@@ -46,6 +46,19 @@ def main() -> None:
 
         app = create_app(camera=camera, stepper=stepper, servo=servo, display=display)
 
+        # Power-saver: when the last controller leaves, turn the camera off so
+        # it never streams with nobody watching (single-core Pi, privacy too).
+        if config.CAMERA_OFF_ON_IDLE:
+            from lillycam.control import lock
+
+            def _on_idle() -> None:
+                if camera is not None and camera.is_streaming:
+                    log.info("No controller connected; turning camera off")
+                    camera.stop_stream()
+                display.set_camera(False)
+
+            lock.set_on_release(_on_idle)
+
         display.show_status(port=config.FLASK_PORT)
         display.set_camera(camera is not None and camera.is_streaming)
         log.info("Ready. Listening on %s:%d", config.FLASK_HOST, config.FLASK_PORT)

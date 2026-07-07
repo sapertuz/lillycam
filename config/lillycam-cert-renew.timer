@@ -1,0 +1,11 @@
+[Unit]
+Description=Weekly LillyCam TLS certificate renewal check
+
+[Timer]
+# Check weekly; tailscale cert only actually reissues when near expiry.
+OnCalendar=Mon 03:00
+# If the Pi was powered off at the scheduled time, run at next boot.
+Persistent=true
+
+[Install]
+WantedBy=timers.target
