@@ -28,6 +28,11 @@ surround. The mic has a paw print. The corner pieces are fish.
 - **Remote access** — Tailscale VPN, accessible from phone or laptop
 - **3D printed enclosure** — cat-themed decorative panels (editable STEP + print-ready STL in [`3d-models/`](3d-models/))
 
+<p align="center">
+  <img src="docs/images/oled-cat.png" alt="OLED cat face states: sleeping when the camera is off, awake when on, blinking, and popping on dispense" width="260">
+  <br><em>The OLED cat: sleeps when the camera is off, wakes when on, and pops on dispense.</em>
+</p>
+
 ## Hardware
 
 | Component | Model | Interface |

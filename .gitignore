@@ -13,14 +13,14 @@ env/
 # Environment config
 .env
 
-# Captured images/audio
+# Captured images/audio (ignore stray media, but keep committed doc images)
 captures/
 *.wav
 *.jpg
 *.jpeg
 *.png
-!docs/images/photo.jpeg
-!docs/images/render.png
+!docs/images/
+!docs/images/**
 
 # Pytest
 .pytest_cache/
