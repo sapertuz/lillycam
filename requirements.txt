@@ -1,10 +1,15 @@
-# Pi deployment dependencies
-# Generated for Raspberry Pi Zero W v1.1, 32-bit Raspberry Pi OS Trixie, Python 3.11+
-# Install with: pip install -r requirements.txt
+# Pi deployment dependencies (LillyCam standard + pro)
+# Install into a venv created with --system-site-packages:
+#   python3 -m venv --system-site-packages .venv
+#   .venv/bin/pip install -r requirements.txt
+#
+# picamera2 is not listed here: install it from apt (it also provides libcamera
+# and a matching numpy); the venv picks it up via --system-site-packages:
+#   sudo apt install -y python3-picamera2
+# See docs/pi-setup.md.
 
 flask>=3.0
 pigpio>=1.78
-picamera2>=0.3
 RPi.GPIO>=0.7
 gpiozero>=2.0
 luma.oled>=3.13

@@ -2,6 +2,10 @@
 
 Target: Raspberry Pi Zero W v1.1, Raspberry Pi OS Lite (32-bit, Trixie/Debian 12), Python 3.11+.
 
+> **Building LillyCam Pro (Pi Zero 2 W)?** Most of these steps are the same, and the
+> GPIO wiring is identical. The differences are the Camera Module 3 (autofocus) and
+> possibly a 64-bit OS. Set `LILLYCAM_MODEL=pro` in step 6.
+
 ## 1. Flash OS
 
 Use Raspberry Pi Imager. Choose **Raspberry Pi OS Lite (32-bit)**.
@@ -65,12 +69,34 @@ sudo i2cdetect -y 1  # should show 0x3c
 
 ## 6. Install LillyCam
 
+picamera2 and libcamera are system libraries - install them with apt (this also
+pulls in a matching numpy):
+```bash
+sudo apt update
+sudo apt install -y python3-picamera2
+```
+
+Clone, create the venv **with `--system-site-packages`** so it can see the system
+picamera2, then install the remaining Python packages:
 ```bash
 git clone https://github.com/sapertuz/lillycam.git ~/lillycam
 cd ~/lillycam
-python3 -m venv .venv
+python3 -m venv --system-site-packages .venv
 .venv/bin/pip install -r requirements.txt
 ```
+
+Create your config from the template and pick the hardware variant:
+```bash
+cp .env.example .env
+```
+Then edit `.env` and set `LILLYCAM_MODEL`:
+- `standard` — Pi Zero W v1.1 + Camera Module v2 (the default)
+- `pro` — Pi Zero 2 W + Camera Module 3
+
+This selects sensible per-model defaults (stream resolution/fps, OLED animation
+rate); you can still override any individual setting in `.env`. Everything else in
+`.env` is optional — the defaults work out of the box (step 8 appends your HTTPS
+cert paths here later).
 
 ## 7. Test peripherals
 

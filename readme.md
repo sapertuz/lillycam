@@ -101,9 +101,10 @@ The diagram below shows the complete 40-pin header allocation:
 ### Install
 
 ```bash
+sudo apt install -y python3-picamera2      # camera stack comes from apt, not pip
 git clone https://github.com/sapertuz/lillycam.git
 cd lillycam
-python3 -m venv .venv
+python3 -m venv --system-site-packages .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 cp .env.example .env        # then set LILLYCAM_MODEL=standard or pro
