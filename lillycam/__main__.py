@@ -24,25 +24,40 @@ def main() -> None:
     try:
         log.info("LillyCam starting up...")
 
+        # Each peripheral is optional: if one is absent (or its setup is missing),
+        # log it and carry on. This lets the service run on a bare board with only
+        # the camera attached (missing hardware just returns 503 in the web UI).
         from lillycam.display import Display
-        display = Display()
-        display.show_message("LillyCam starting...")
+        try:
+            display = Display()
+            display.show_message("LillyCam starting...")
+        except Exception as exc:
+            log.warning("OLED display not available: %s", exc)
+            display = None
 
         from lillycam.camera import Camera
-        camera = Camera()
-        # Camera stays off at boot by default (privacy); turn it on from the web UI.
-        if config.CAMERA_AUTOSTART:
-            try:
+        try:
+            camera = Camera()
+            # Camera stays off at boot by default (privacy); turn it on from the web UI.
+            if config.CAMERA_AUTOSTART:
                 camera.start_stream()
-            except Exception as exc:
-                log.warning("Camera not available: %s", exc)
-                camera = None
+        except Exception as exc:
+            log.warning("Camera not available: %s", exc)
+            camera = None
 
         from lillycam.stepper import Stepper
-        stepper = Stepper()
+        try:
+            stepper = Stepper()
+        except Exception as exc:
+            log.warning("Stepper not available: %s", exc)
+            stepper = None
 
         from lillycam.servo import Servo
-        servo = Servo()
+        try:
+            servo = Servo()
+        except Exception as exc:
+            log.warning("Servo not available: %s", exc)
+            servo = None
 
         app = create_app(camera=camera, stepper=stepper, servo=servo, display=display)
 
@@ -55,12 +70,14 @@ def main() -> None:
                 if camera is not None and camera.is_streaming:
                     log.info("No controller connected; turning camera off")
                     camera.stop_stream()
-                display.set_camera(False)
+                if display is not None:
+                    display.set_camera(False)
 
             lock.set_on_release(_on_idle)
 
-        display.show_status(port=config.FLASK_PORT)
-        display.set_camera(camera is not None and camera.is_streaming)
+        if display is not None:
+            display.show_status(port=config.FLASK_PORT)
+            display.set_camera(camera is not None and camera.is_streaming)
         log.info("Ready. Listening on %s:%d", config.FLASK_HOST, config.FLASK_PORT)
 
         ssl_context = None
