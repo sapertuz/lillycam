@@ -33,6 +33,28 @@ def _str(key: str, default: str) -> str:
     return os.getenv(key, default)
 
 
+# --- Model profile ---
+# LillyCam ships in two hardware variants that share this codebase:
+#   standard - Pi Zero W v1.1 + Camera Module v2 (single-core; conservative defaults)
+#   pro      - Pi Zero 2 W    + Camera Module 3  (quad-core; more headroom)
+# LILLYCAM_MODEL selects the per-model defaults below. Precedence for any setting
+# is: explicit .env value > model default > shared code default.
+LILLYCAM_MODEL: str = _str("LILLYCAM_MODEL", "standard").strip().lower()
+if LILLYCAM_MODEL not in ("standard", "pro"):
+    LILLYCAM_MODEL = "standard"
+IS_PRO: bool = LILLYCAM_MODEL == "pro"
+
+_MODEL_DEFAULTS: dict[str, dict[str, object]] = {
+    "standard": {"STREAM_WIDTH": 640, "STREAM_HEIGHT": 480, "STREAM_FPS": 15, "OLED_FPS": 6},
+    "pro": {"STREAM_WIDTH": 1280, "STREAM_HEIGHT": 720, "STREAM_FPS": 30, "OLED_FPS": 12},
+}
+
+
+def _model_default(key: str, fallback):
+    """Per-model default for a setting, falling back to a shared value."""
+    return _MODEL_DEFAULTS.get(LILLYCAM_MODEL, {}).get(key, fallback)
+
+
 # --- Flask ---
 FLASK_HOST: str = _str("FLASK_HOST", "0.0.0.0")
 FLASK_PORT: int = _int("FLASK_PORT", 5000)
@@ -41,9 +63,9 @@ FLASK_DEBUG: bool = _bool("FLASK_DEBUG", False)
 # --- Camera ---
 CAMERA_AUTOSTART: bool = _bool("CAMERA_AUTOSTART", False)  # off at boot for privacy; turn on from the web UI
 CAMERA_SOUND: bool = _bool("CAMERA_SOUND", True)  # play a chirp when the camera turns on
-STREAM_WIDTH: int = _int("STREAM_WIDTH", 640)
-STREAM_HEIGHT: int = _int("STREAM_HEIGHT", 480)
-STREAM_FPS: int = _int("STREAM_FPS", 15)
+STREAM_WIDTH: int = _int("STREAM_WIDTH", _model_default("STREAM_WIDTH", 640))
+STREAM_HEIGHT: int = _int("STREAM_HEIGHT", _model_default("STREAM_HEIGHT", 480))
+STREAM_FPS: int = _int("STREAM_FPS", _model_default("STREAM_FPS", 15))
 STILL_WIDTH: int = _int("STILL_WIDTH", 3280)
 STILL_HEIGHT: int = _int("STILL_HEIGHT", 2464)
 CAPTURE_DIR: Path = Path(_str("CAPTURE_DIR", str(Path.home() / "captures")))
@@ -78,7 +100,7 @@ CAMERA_OFF_ON_IDLE: bool = _bool("CAMERA_OFF_ON_IDLE", True)  # turn the camera 
 OLED_WIDTH: int = _int("OLED_WIDTH", 128)
 OLED_HEIGHT: int = _int("OLED_HEIGHT", 32)
 OLED_ANIMATE: bool = _bool("OLED_ANIMATE", True)  # animated cat face (set false for static text only)
-OLED_FPS: int = _int("OLED_FPS", 6)  # animation refresh rate (keep low; single-core Pi)
+OLED_FPS: int = _int("OLED_FPS", _model_default("OLED_FPS", 6))  # per-model (standard 6, pro 12)
 
 # --- PWA / Web Push (experimental) ---
 # The web UI ships as an installable PWA (manifest + service worker + icons).

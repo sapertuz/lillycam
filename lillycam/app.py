@@ -42,6 +42,8 @@ def create_app(camera=None, stepper=None, servo=None, display=None) -> Flask:
     # and degrade gracefully if the dependency is missing rather than crashing.
     from lillycam import config
 
+    log.info("Model profile: %s", config.LILLYCAM_MODEL)
+
     if config.PUSH_ENABLED:
         try:
             from lillycam.web.push import init_push, push_bp

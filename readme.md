@@ -1,7 +1,7 @@
 # LillyCam 🐱
 
 A DIY cat treat dispenser with live camera, two-way audio, and remote control —
-built on a Raspberry Pi Zero W.
+built on a Raspberry Pi Zero W (or a Zero 2 W for the "Pro" build).
 
 <p align="center">
   <img src="docs/images/render.png" alt="LillyCam enclosure render" width="420">
@@ -18,7 +18,7 @@ surround. The mic has a paw print. The corner pieces are fish.
 
 ## Features
 
-- **Live video** — 640x480 @ 15fps MJPEG stream via Flask (off by default at boot; wake it from the web UI)
+- **Live video** — 640x480 @ 15fps MJPEG stream via Flask, up to 1280x720 @ 30fps on Pro (off by default at boot; wake it from the web UI)
 - **Treat dispensing** — 28BYJ-48 5V stepper motor with a cylindrical funnel insert
 - **Base rotation** — SG90 servo for panning the whole unit
 - **Two-way audio** — INMP441 I2S mic + MAX98357A amp (half-duplex, push-to-talk)
@@ -32,6 +32,25 @@ surround. The mic has a paw print. The corner pieces are fish.
   <img src="docs/images/oled-cat.png" alt="OLED cat face states: sleeping when the camera is off, awake when on, blinking, and popping on dispense" width="260">
   <br><em>The OLED cat: sleeps when the camera is off, wakes when on, and pops on dispense.</em>
 </p>
+
+## Two models
+
+LillyCam comes in two variants from one codebase. Pick yours with `LILLYCAM_MODEL`
+in `.env` — it sets sensible per-model defaults, and any individual setting can
+still be overridden:
+
+| | **LillyCam** (`standard`) | **LillyCam Pro** (`pro`) |
+|---|---|---|
+| Computer | Pi Zero W v1.1 (single-core) | Pi Zero 2 W (quad-core) |
+| Camera | Camera Module v2 (IMX219) | Camera Module 3 (IMX708, autofocus) |
+| Stream default | 640x480 @ 15fps | 1280x720 @ 30fps |
+| OLED animation | 6 fps | 12 fps |
+
+The GPIO wiring is identical for both (same 40-pin header, same
+[`pins.py`](lillycam/pins.py)) — only the board, camera, and software defaults
+differ. Both share the web UI, home-screen PWA install, and opt-in Web Push; the
+Pro's extra CPU headroom is what makes the higher-res stream and roadmap features
+(listen toggle, servo tracking) practical.
 
 ## Hardware
 
@@ -74,7 +93,7 @@ The diagram below shows the complete 40-pin header allocation:
 
 ### Prerequisites
 
-- Raspberry Pi Zero W with Raspberry Pi OS (32-bit, Trixie)
+- Raspberry Pi Zero W (standard) or Zero 2 W (Pro) with Raspberry Pi OS
 - All hardware connected per [docs/hardware.md](docs/hardware.md)
 - I2S overlays enabled per [docs/pi-setup.md](docs/pi-setup.md)
 - SSH access (USB gadget Ethernet or WiFi)
@@ -87,6 +106,7 @@ cd lillycam
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
+cp .env.example .env        # then set LILLYCAM_MODEL=standard or pro
 ```
 
 ### Test peripherals individually
