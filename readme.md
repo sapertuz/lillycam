@@ -35,22 +35,15 @@ surround. The mic has a paw print. The corner pieces are fish.
 
 ## Two models
 
-LillyCam comes in two variants from one codebase. Pick yours with `LILLYCAM_MODEL`
-in `.env` — it sets sensible per-model defaults, and any individual setting can
-still be overridden:
+Set `LILLYCAM_MODEL` in `.env` to `standard` or `pro` (it sets per-model defaults;
+any setting can still be overridden):
 
 | | **LillyCam** (`standard`) | **LillyCam Pro** (`pro`) |
 |---|---|---|
-| Computer | Pi Zero W v1.1 (single-core) | Pi Zero 2 W (quad-core) |
-| Camera | Camera Module v2 (IMX219) | Camera Module 3 (IMX708, autofocus) |
+| Computer | Pi Zero W v1.1 | Pi Zero 2 W |
+| Camera | Camera Module v2 (IMX219) | Camera Module 3 (IMX708) |
 | Stream default | 640x480 @ 15fps | 1280x720 @ 30fps |
 | OLED animation | 6 fps | 12 fps |
-
-The GPIO wiring is identical for both (same 40-pin header, same
-[`pins.py`](lillycam/pins.py)) — only the board, camera, and software defaults
-differ. Both share the web UI, home-screen PWA install, and opt-in Web Push; the
-Pro's extra CPU headroom is what makes the higher-res stream and roadmap features
-(listen toggle, servo tracking) practical.
 
 ## Hardware
 
@@ -101,7 +94,7 @@ The diagram below shows the complete 40-pin header allocation:
 ### Install
 
 ```bash
-sudo apt install -y python3-picamera2      # camera stack comes from apt, not pip
+sudo apt install -y python3-picamera2
 git clone https://github.com/sapertuz/lillycam.git
 cd lillycam
 python3 -m venv --system-site-packages .venv
