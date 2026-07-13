@@ -113,8 +113,15 @@ def camera_on():
     cam.start_stream()
     if current_app.display:
         current_app.display.set_camera(True)
-    from lillycam import audio
-    audio.chirp_async()
+    # The camera-on chirp is optional: never let a missing audio stack (no
+    # PortAudio, or no I2S sound card) block turning the camera on.
+    from lillycam import config as cfg
+    if cfg.CAMERA_SOUND:
+        try:
+            from lillycam import audio
+            audio.chirp_async()
+        except Exception as exc:
+            log.warning("Camera-on chirp skipped: %s", exc)
     return jsonify(on=True)
 
 
@@ -245,9 +252,10 @@ def speak():
     """
     if not _has_control():
         return _locked_response()
-    from lillycam import audio, config as cfg
+    from lillycam import config as cfg
     if not cfg.AUDIO_ENABLED:
         return jsonify(error="Audio disabled"), 503
+    from lillycam import audio
     import numpy as np, io, wave
 
     body = request.data
