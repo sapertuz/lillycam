@@ -14,6 +14,11 @@ sounddevice>=0.4
 numpy>=1.26
 python-dotenv>=1.0
 
+# PWA Web Push (optional; only needed when PUSH_ENABLED=true)
+# Pulls in py-vapid + cryptography + http-ece. Install on the Pi with:
+#   pip install pywebpush
+# pywebpush>=1.14
+
 # Dev/test (optional, can skip on Pi)
 # pytest>=7.0
 # pytest-mock>=3.0

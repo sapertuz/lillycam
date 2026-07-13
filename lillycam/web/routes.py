@@ -71,8 +71,26 @@ def session_status():
 @bp.route("/")
 def index():
     """Main control page."""
+    from lillycam import config
     _token()  # ensure the session cookie exists before the page claims control
-    return render_template("index.html")
+    return render_template(
+        "index.html",
+        pwa_enabled=config.PWA_ENABLED,
+        push_enabled=config.PUSH_ENABLED,
+    )
+
+
+@bp.route("/sw.js")
+def service_worker():
+    """Serve the service worker from the root so its scope covers the whole app.
+
+    A worker served from /static/ would only control /static/; PWAs need root.
+    """
+    resp = send_from_directory(current_app.static_folder, "sw.js")
+    resp.headers["Content-Type"] = "application/javascript"
+    resp.headers["Service-Worker-Allowed"] = "/"
+    resp.headers["Cache-Control"] = "no-cache"
+    return resp
 
 
 # --- Video stream ---

@@ -79,3 +79,14 @@ OLED_WIDTH: int = _int("OLED_WIDTH", 128)
 OLED_HEIGHT: int = _int("OLED_HEIGHT", 32)
 OLED_ANIMATE: bool = _bool("OLED_ANIMATE", True)  # animated cat face (set false for static text only)
 OLED_FPS: int = _int("OLED_FPS", 6)  # animation refresh rate (keep low; single-core Pi)
+
+# --- PWA / Web Push (experimental) ---
+# The web UI ships as an installable PWA (manifest + service worker + icons).
+# Home-screen install is harmless, so it is on by default. Web Push is opt-in:
+# it needs the pywebpush dependency and only works over HTTPS (Tailscale cert),
+# and on iOS 16.4+ only after the app is added to the Home Screen.
+PWA_ENABLED: bool = _bool("PWA_ENABLED", True)
+PUSH_ENABLED: bool = _bool("PUSH_ENABLED", False)
+PUSH_CONTACT: str = _str("PUSH_CONTACT", "mailto:admin@example.com")  # VAPID "sub" claim
+# Keys + subscriptions live outside the code tree so redeploys do not wipe them.
+PUSH_STATE_DIR: Path = Path(_str("PUSH_STATE_DIR", str(Path.home() / ".lillycam")))

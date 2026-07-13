@@ -38,5 +38,19 @@ def create_app(camera=None, stepper=None, servo=None, display=None) -> Flask:
     from lillycam.web.routes import bp
     app.register_blueprint(bp)
 
+    # Web Push is opt-in (needs pywebpush + HTTPS). Register it only when asked,
+    # and degrade gracefully if the dependency is missing rather than crashing.
+    from lillycam import config
+
+    if config.PUSH_ENABLED:
+        try:
+            from lillycam.web.push import init_push, push_bp
+
+            init_push()
+            app.register_blueprint(push_bp)
+            log.info("Web Push enabled")
+        except Exception as exc:
+            log.error("PUSH_ENABLED but Web Push could not start: %s", exc)
+
     log.info("Flask app created")
     return app

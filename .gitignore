@@ -21,6 +21,8 @@ captures/
 *.png
 !docs/images/
 !docs/images/**
+# PWA app icons are generated assets we do want committed
+!lillycam/web/static/*.png
 
 # Pytest
 .pytest_cache/

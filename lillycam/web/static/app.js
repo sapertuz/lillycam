@@ -1,5 +1,15 @@
 "use strict";
 
+// --- PWA service worker ---
+// Registering it makes the app installable ("Add to Home Screen") and is the
+// prerequisite for Web Push. Harmless where unsupported. Scope "/" needs the
+// worker served from the root (see the /sw.js Flask route).
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/sw.js", { scope: "/" }).catch(() => {});
+  });
+}
+
 // --- Single-connection control ---
 // Only one device controls LillyCam at a time. We claim a slot on load, keep it
 // alive with heartbeats, and release it on unload. A second device sees a lock
