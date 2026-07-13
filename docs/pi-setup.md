@@ -181,27 +181,33 @@ sudo systemctl start lillycam-cert-renew.service
 systemctl list-timers lillycam-cert-renew.timer
 ```
 
-## 9. Configure pigpiod for I2S compatibility
+## 9. Enable hardware PWM for the servo
 
-pigpiod (required for servo control) uses the PCM peripheral as its DMA clock
-source by default. On the Pi Zero W this conflicts with the I2S audio driver,
-causing audio to play and record at half speed. The fix is a one-line override
-that switches pigpiod to use the PWM peripheral for timing instead.
-
-```bash
-sudo mkdir -p /etc/systemd/system/pigpiod.service.d/
-sudo cp ~/lillycam/config/pigpiod-override.conf \
-    /etc/systemd/system/pigpiod.service.d/override.conf
-sudo systemctl daemon-reload
-sudo systemctl enable pigpiod
-sudo systemctl start pigpiod
+The servo uses the kernel's hardware PWM on `GPIO 12` (jitter-free, no daemon).
+Add the PWM overlay to `/boot/firmware/config.txt` (it is also in
+`config/config.txt.snippet`):
+```
+dtoverlay=pwm,pin=12,func=4
 ```
 
-Verify both servo and audio work together:
+Reboot, then verify the PWM chip appears and test the servo:
 ```bash
-.venv/bin/python examples/test_servo.py &
-aplay -D speaker /tmp/lillycam_mic_test.wav
+ls /sys/class/pwm/                    # expect pwmchip0 (pwmchip2 on a Pi 5)
+.venv/bin/python examples/test_servo.py
 ```
+
+Modern Pi OS grants the `gpio` group access to `/sys/class/pwm` (via its
+`99-com.rules`), so the `admin`-run service can drive it. If the servo works when
+you run the test with `sudo` but not from the service, add a udev rule:
+```bash
+sudo tee /etc/udev/rules.d/99-pwm.rules >/dev/null <<'RULE'
+SUBSYSTEM=="pwm", GROUP="gpio", MODE="0660"
+RULE
+sudo udevadm control --reload-rules && sudo udevadm trigger
+```
+
+On a Pi 5 the PWM chip is `pwmchip2` - set `SERVO_PWM_CHIP=2` in `.env`. Dropping
+pigpiod also removes the old PCM/I2S clock conflict, so audio needs no timing workaround.
 
 ## 10. Install as a systemd service
 

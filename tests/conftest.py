@@ -61,12 +61,10 @@ sys.modules["PIL.ImageFont"] = _make_mock("PIL.ImageFont")
 # smbus2
 sys.modules["smbus2"] = _make_mock("smbus2")
 
-# pigpio
-pigpio_mock = _make_mock("pigpio")
-_pi_instance = MagicMock()
-_pi_instance.connected = True
-pigpio_mock.pi.return_value = _pi_instance
-sys.modules["pigpio"] = pigpio_mock
+# rpi_hardware_pwm (servo hardware PWM)
+rpi_hw_pwm_mock = _make_mock("rpi_hardware_pwm")
+rpi_hw_pwm_mock.HardwarePWM = MagicMock()
+sys.modules["rpi_hardware_pwm"] = rpi_hw_pwm_mock
 
 
 @pytest.fixture()

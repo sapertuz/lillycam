@@ -105,7 +105,7 @@ Summary by subsystem:
 - Python 3.11+
 - Flask (web server)
 - picamera2 (camera control)
-- RPi.GPIO (stepper GPIO) + pigpio (servo hardware PWM via pigpiod)
+- rpi-lgpio (stepper GPIO, drop-in RPi.GPIO shim on lgpio) + rpi-hardware-pwm (servo kernel hardware PWM)
 - luma.oled + luma.core (SSD1306 driver)
 - smbus2 (I2C)
 - sounddevice + numpy (audio I/O via ALSA/I2S)
@@ -131,9 +131,8 @@ lillycam/
 │
 ├── config/
 │   ├── asound.conf                # ALSA config for I2S mic + amp
-│   ├── config.txt.snippet         # boot/config.txt lines (dtoverlay=i2s, etc.)
-│   ├── lillycam.service           # systemd unit file
-│   └── pigpiod-override.conf      # systemd drop-in: pigpiod -t 0 for I2S compat
+│   ├── config.txt.snippet         # boot/config.txt lines (dtoverlay=i2s, pwm, etc.)
+│   └── lillycam.service           # systemd unit file
 │
 ├── 3d-models/                     # CAD files (editable source + print meshes)
 │   ├── step/                      # editable STEP (opens in any CAD tool)

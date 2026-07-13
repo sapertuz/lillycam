@@ -13,9 +13,10 @@ dtoverlay=googlevoicehat-soundcard
 # Pi Camera v2 (IMX219). Already enabled by default on Pi OS but listed for clarity.
 # camera_auto_detect=1  (default on modern Pi OS, no action needed)
 
-# --- Hardware PWM for servo on GPIO 12 (PWM1) ---
-# dtoverlay=pwm,pin=12,func=4
-# (Not needed if using software PWM via RPi.GPIO - only required for pigpio HW PWM)
+# --- Hardware PWM for servo on GPIO 12 ---
+# Kernel hardware PWM (channel 0) for the SG90 servo via rpi-hardware-pwm.
+# Required - the servo gets no signal without it.
+dtoverlay=pwm,pin=12,func=4
 
 # --- USB gadget Ethernet for headless SSH ---
 # Enable in /boot/firmware/cmdline.txt by appending: modules-load=dwc2,g_ether

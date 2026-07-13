@@ -9,8 +9,6 @@
 # See docs/pi-setup.md.
 
 flask>=3.0
-pigpio>=1.78
-RPi.GPIO>=0.7
 gpiozero>=2.0
 luma.oled>=3.13
 luma.core>=2.4
@@ -18,6 +16,13 @@ smbus2>=0.4
 sounddevice>=0.4
 numpy>=1.26
 python-dotenv>=1.0
+
+# GPIO stack. rpi-lgpio is a drop-in RPi.GPIO shim on lgpio (stepper);
+# rpi-hardware-pwm drives the servo via the kernel's hardware PWM. Both work on
+# every Pi (incl. Pi 5) and replace the old RPi.GPIO + pigpio/pigpiod stack.
+# The servo also needs 'dtoverlay=pwm,pin=12,func=4' in config.txt.
+rpi-lgpio
+rpi-hardware-pwm>=0.2
 
 # PWA Web Push (optional; only needed when PUSH_ENABLED=true)
 # Pulls in py-vapid + cryptography + http-ece. Install on the Pi with:

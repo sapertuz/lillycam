@@ -78,6 +78,11 @@ STEPPER_STEP_DELAY: float = _float("STEPPER_STEP_DELAY", 0.002)
 SERVO_MIN_ANGLE: int = _int("SERVO_MIN_ANGLE", 0)
 SERVO_MAX_ANGLE: int = _int("SERVO_MAX_ANGLE", 180)
 SERVO_DEFAULT_ANGLE: int = _int("SERVO_DEFAULT_ANGLE", 90)
+# Kernel hardware PWM (rpi-hardware-pwm). GPIO 12 = PWM channel 0; enable with
+# 'dtoverlay=pwm,pin=12,func=4'. chip is 0 on Pi Zero / Zero 2 W / Pi 4, 2 on Pi 5.
+SERVO_PWM_CHANNEL: int = _int("SERVO_PWM_CHANNEL", 0)
+SERVO_PWM_CHIP: int = _int("SERVO_PWM_CHIP", 0)
+SERVO_PWM_FREQ: int = _int("SERVO_PWM_FREQ", 50)
 
 # --- Audio ---
 AUDIO_ENABLED: bool = _bool("AUDIO_ENABLED", True)  # set to false to disable mic+speaker

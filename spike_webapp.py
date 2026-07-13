@@ -1,7 +1,7 @@
 """Run just the LillyCam web UI - no hardware - for the PWA / Web Push spike.
 
 The normal entry point (python -m lillycam) initializes the camera, stepper,
-servo, OLED and audio, which pulls in picamera2 / RPi.GPIO / pigpio / etc. The
+servo, OLED and audio, which pulls in picamera2 / rpi-lgpio / rpi-hardware-pwm / etc. The
 spike only needs the web layer, so this serves create_app() with every hardware
 object set to None. Hardware routes return 503; the PWA install, microphone
 permission and Web Push paths all work unchanged.
